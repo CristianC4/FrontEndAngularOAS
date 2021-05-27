@@ -1,0 +1,15 @@
+html{
+    align-items: center;
+    text-align: center;
+}
+.card{
+    margin: 2em;
+    padding: 1em;
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+table {
+    width: 100%;
+}

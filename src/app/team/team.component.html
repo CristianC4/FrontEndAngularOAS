@@ -1,0 +1,70 @@
+<mat-card>
+    <mat-card-title>
+        Registrar Equipo
+    </mat-card-title>
+    <mat-card-content class="card">
+        <mat-form-field appearance="legacy">
+            <mat-label>Nombre: </mat-label>
+            <input matInput type="text" name="name_team" id="name_team" placeholder="Ej: Real Madrid F.C" [(ngModel)]="team.name_team">
+        </mat-form-field> 
+    <!--
+        <mat-form-field appearance="legacy">
+            <mat-label>Fecha de Fundacion: </mat-label>
+            <input matInput [matDatepicker]="picker"[(ngModel)]="team.date_team">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+        Las fechas con DatePicker mandan objeto momentjs pero no es facil de consumirlo sin generar dependencia
+    -->
+        <mat-form-field appearance="legacy">
+            <mat-label>Fecha de Fundacion: </mat-label> 
+            <input matInput type="text" name="date_team" id="date_team" placeholder="Ej: yyyy-mm-dd" [(ngModel)]="team.date_team">
+        </mat-form-field>
+        <mat-form-field appearance="legacy">
+            <mat-label>Pais de Origen: </mat-label> 
+            <input matInput type="text" name="country_team" id="country_team" placeholder="Ej: España" [(ngModel)]="team.country_team">
+        </mat-form-field>
+        <mat-form-field appearance="legacy">
+            <mat-label>Ciudad de Origen: </mat-label>
+            <input matInput type="text" name="city_team" id="city_team" placeholder="Ej: Madrid" [(ngModel)]="team.city_team">
+        </mat-form-field>  
+        <button mat-raised-button color="primary" (click)="registerTeam(team)">Registrar</button> 
+    </mat-card-content>
+</mat-card>
+<mat-card>
+    <table mat-table [dataSource]="teams" class="mat-elevation-z8">
+      
+        <!-- Id Column -->
+        <ng-container matColumnDef="id_team">
+          <th mat-header-cell *matHeaderCellDef> No. </th>
+          <td mat-cell *matCellDef="let element"> {{element.id_team}} </td>
+        </ng-container>
+      
+        <!-- Name Column -->
+        <ng-container matColumnDef="name_team">
+          <th mat-header-cell *matHeaderCellDef> Name </th>
+          <td mat-cell *matCellDef="let element"> {{element.name_team}} </td>
+        </ng-container>
+      
+        <!-- Date Column -->
+        <ng-container matColumnDef="date_team">
+          <th mat-header-cell *matHeaderCellDef> Date </th>
+          <td mat-cell *matCellDef="let element"> {{element.date_team}} </td>
+        </ng-container>
+      
+        <!-- Country Column -->
+        <ng-container matColumnDef="country_team">
+          <th mat-header-cell *matHeaderCellDef> Country </th>
+          <td mat-cell *matCellDef="let element"> {{element.country_team}} </td>
+        </ng-container>
+
+        <!-- Country Column -->
+        <ng-container matColumnDef="city_team">
+            <th mat-header-cell *matHeaderCellDef> City </th>
+            <td mat-cell *matCellDef="let element"> {{element.city_team}} </td>
+          </ng-container>
+      
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+</mat-card>
